@@ -242,7 +242,7 @@ class _PaymentState extends State<Payment> {
                     Navigator.pop(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ShoppingCart(),
+                        builder: (context) => MyApp(),
                       ),
                     );
                   },
