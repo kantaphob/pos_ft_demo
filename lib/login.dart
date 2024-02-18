@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     if (isValidUser) {
-      // Navigate to the next page
+      // Navigate to Menu
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => ShoppingCart()),

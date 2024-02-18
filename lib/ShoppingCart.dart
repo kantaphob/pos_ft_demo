@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:pos_ft_demo/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -63,20 +64,39 @@ class _ShoppingCartState extends State<ShoppingCart> {
         backgroundColor: Colors.brown,
         //Navigation --------------------------------------------
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      AccountPage(), // Navigate to AccountPage
+          PopupMenuButton(
+            icon: Icon(Icons.settings),
+            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+              PopupMenuItem(
+                child: ListTile(
+                  leading: const Icon(Icons.account_circle),
+                  title: const Text('Account'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AccountPage(),
+                      ),
+                    );
+                  },
                 ),
-              );
-            },
-            icon: Icon(Icons.account_circle), // Add icon for AccountPage
+              ),
+              PopupMenuItem(
+                child: ListTile(
+                  leading: const Icon(Icons.logout),
+                  title: const Text('Logout'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginPage(),
+                        ));
+                  },
+                ),
+              ),
+            ],
           ),
         ],
-
         //Navigation --------------------------------------------
       ),
       body: ListView.builder(
@@ -112,7 +132,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
   }
 }
 
-//accout page
+//accout page ----------------------------------------------------------------------------
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
 
@@ -322,7 +342,7 @@ class _PaymentState extends State<Payment> {
                     Navigator.pop(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MyApp(),
+                        builder: (context) => ShoppingCart(),
                       ),
                     );
                   },
