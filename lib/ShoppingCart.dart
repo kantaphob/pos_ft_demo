@@ -61,6 +61,23 @@ class _ShoppingCartState extends State<ShoppingCart> {
           'Menu',
         ),
         backgroundColor: Colors.brown,
+        //Navigation --------------------------------------------
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      AccountPage(), // Navigate to AccountPage
+                ),
+              );
+            },
+            icon: Icon(Icons.account_circle), // Add icon for AccountPage
+          ),
+        ],
+
+        //Navigation --------------------------------------------
       ),
       body: ListView.builder(
         itemCount: coffeePrices.length,
@@ -90,6 +107,67 @@ class _ShoppingCartState extends State<ShoppingCart> {
         },
         label: Text('Checkout (${cart.length} Items)'),
         icon: const Icon(Icons.shopping_cart),
+      ),
+    );
+  }
+}
+
+//accout page
+class AccountPage extends StatefulWidget {
+  const AccountPage({Key? key}) : super(key: key);
+
+  @override
+  _AccountPageState createState() => _AccountPageState();
+}
+
+class _AccountPageState extends State<AccountPage> {
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Account'),
+        backgroundColor: Colors.brown,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextFormField(
+              controller: _nameController,
+              decoration: InputDecoration(labelText: 'Name'),
+            ),
+            SizedBox(height: 16.0),
+            TextFormField(
+              controller: _emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            SizedBox(height: 16.0),
+            TextFormField(
+              controller: _passwordController,
+              decoration: InputDecoration(labelText: 'Password'),
+              obscureText: true,
+            ),
+            SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                // Add logic to update user information
+                String name = _nameController.text;
+                String email = _emailController.text;
+                String password = _passwordController.text;
+                // Call API or perform any other action to update user information
+                // Display success or failure message accordingly
+                // You can also navigate back to the previous page upon successful update
+                // Navigator.pop(context);
+              },
+              child: Text('Save'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -166,7 +244,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Payment(totalPrice: totalPrice)),
+                  MaterialPageRoute(
+                      builder: (context) => Payment(totalPrice: totalPrice)),
                 );
               },
               label: Text('Proceed to Payment ($totalPrice ฿)'),
@@ -220,7 +299,8 @@ class _PaymentState extends State<Payment> {
                   title: const Text('Total Price'),
                   trailing: Text(
                     '${widget.totalPrice.toString()} ฿', // Use widget.totalPrice to access the passed value
-                    style: const TextStyle(fontSize: 18), // Add style to the text
+                    style:
+                        const TextStyle(fontSize: 18), // Add style to the text
                   ),
                 ),
               ),
