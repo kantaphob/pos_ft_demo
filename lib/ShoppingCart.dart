@@ -3,24 +3,8 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:pos_ft_demo/login.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Shopping Cart',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const ShoppingCart(),
-    );
-  }
-}
+  runApp(const ShoppingCart());
+} 
 
 class ShoppingCart extends StatefulWidget {
   const ShoppingCart({Key? key}) : super(key: key);
@@ -54,6 +38,15 @@ class _ShoppingCartState extends State<ShoppingCart> {
     });
   }
 
+  void logout(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MyApp(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,8 +62,8 @@ class _ShoppingCartState extends State<ShoppingCart> {
             itemBuilder: (BuildContext context) => <PopupMenuEntry>[
               PopupMenuItem(
                 child: ListTile(
-                  leading: const Icon(Icons.account_circle),
-                  title: const Text('Account'),
+                  leading: Icon(Icons.account_circle),
+                  title: Text('Account'),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -83,14 +76,10 @@ class _ShoppingCartState extends State<ShoppingCart> {
               ),
               PopupMenuItem(
                 child: ListTile(
-                  leading: const Icon(Icons.logout),
-                  title: const Text('Logout'),
+                  leading: Icon(Icons.logout),
+                  title: Text('Logout'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginPage(),
-                        ));
+                    logout(context);
                   },
                 ),
               ),
@@ -318,9 +307,9 @@ class _PaymentState extends State<Payment> {
                 child: ListTile(
                   title: const Text('Total Price'),
                   trailing: Text(
-                    '${widget.totalPrice.toString()} ฿', // Use widget.totalPrice to access the passed value
+                    '${widget.totalPrice.toString()} ฿', 
                     style:
-                        const TextStyle(fontSize: 18), // Add style to the text
+                        const TextStyle(fontSize: 18), 
                   ),
                 ),
               ),
@@ -356,4 +345,5 @@ class _PaymentState extends State<Payment> {
   }
 }
 
-// 20/2/67/16.09
+
+// 20/2/67/17.44
