@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:pos_ft_demo/login.dart';
+import 'package:pos_ft_demo/accout.dart';
+
 
 void main() {
   runApp(const ShoppingCart());
@@ -68,7 +69,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const AccountPage(),
+                        builder: (context) => const AccountScreen(),
                       ),
                     );
                   },
@@ -121,66 +122,66 @@ class _ShoppingCartState extends State<ShoppingCart> {
   }
 }
 
-//accout page ----------------------------------------------------------------------------
-class AccountPage extends StatefulWidget {
-  const AccountPage({Key? key}) : super(key: key);
+// //accout page ----------------------------------------------------------------------------
+// class AccountPage extends StatefulWidget {
+//   const AccountPage({Key? key}) : super(key: key);
 
-  @override
-  _AccountPageState createState() => _AccountPageState();
-}
+//   @override
+//   _AccountPageState createState() => _AccountPageState();
+// }
 
-class _AccountPageState extends State<AccountPage> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+// class _AccountPageState extends State<AccountPage> {
+//   TextEditingController _nameController = TextEditingController();
+//   TextEditingController _emailController = TextEditingController();
+//   TextEditingController _passwordController = TextEditingController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Account'),
-        backgroundColor: Colors.brown,
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextFormField(
-              controller: _nameController,
-              decoration: InputDecoration(labelText: 'Name'),
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                // Add logic to update user information
-                String name = _nameController.text;
-                String email = _emailController.text;
-                String password = _passwordController.text;
-                // Call API or perform any other action to update user information
-                // Display success or failure message accordingly
-                // You can also navigate back to the previous page upon successful update
-                // Navigator.pop(context);
-              },
-              child: Text('Save'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Account'),
+//         backgroundColor: Colors.brown,
+//       ),
+//       body: Padding(
+//         padding: EdgeInsets.all(16.0),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.stretch,
+//           children: [
+//             TextFormField(
+//               controller: _nameController,
+//               decoration: InputDecoration(labelText: 'Name'),
+//             ),
+//             SizedBox(height: 16.0),
+//             TextFormField(
+//               controller: _emailController,
+//               decoration: InputDecoration(labelText: 'Email'),
+//             ),
+//             SizedBox(height: 16.0),
+//             TextFormField(
+//               controller: _passwordController,
+//               decoration: InputDecoration(labelText: 'Password'),
+//               obscureText: true,
+//             ),
+//             SizedBox(height: 16.0),
+//             ElevatedButton(
+//               onPressed: () {
+//                 // Add logic to update user information
+//                 String name = _nameController.text;
+//                 String email = _emailController.text;
+//                 String password = _passwordController.text;
+//                 // Call API or perform any other action to update user information
+//                 // Display success or failure message accordingly
+//                 // You can also navigate back to the previous page upon successful update
+//                 // Navigator.pop(context);
+//               },
+//               child: Text('Save'),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class CheckoutPage extends StatefulWidget {
   final List<String> cart;
@@ -346,4 +347,4 @@ class _PaymentState extends State<Payment> {
 }
 
 
-// 20/2/67/17.44
+//20/2/67/23.41
